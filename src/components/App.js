@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import { getToken, clearToken, hitAPI  } from "../api";
 import Auth from "./Auth";
-import Routines from "../components/MyRoutines";
+import Routines from "../components/Routines";
 import Activities from '../components/Activities';
 import NewActivityForm from "../components/NewActivityForm";
 import "./App.css"
@@ -30,10 +30,10 @@ const App = () => {
       };
 
     useEffect(() => {
-        if (!isLoggedIn) {
-          setMasterRoutineList([]);
-          return;
-        }
+        // if (!isLoggedIn) {
+        //   setMasterRoutineList([]);
+        //   return;
+        // }
         
           hitAPI("GET", "/users/me")
           .then((data) => {
@@ -44,14 +44,19 @@ const App = () => {
         },[isLoggedIn]);
 
 
-        useEffect(() => {
-            hitAPI("GET", "/activities")
-              .then((data) => {
-                const activities = data;
-                setMasterActivitiesList(activities);
-              })
-              .catch((err) => console.error(err));
-          }, []);
+        //  All users regardless of isLoggedIn can view these
+  useEffect(() => {
+    Promise.all([hitAPI("GET", "/routines"), hitAPI("GET", "/activities")])
+      .then((data) => {
+        const routines = data[0];
+        const activities = data[1];
+        setMasterRoutineList(routines);
+        setMasterActivitiesList(activities);
+        console.log("All routines", routines);
+        console.log("All activities", activities);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
        
         
@@ -145,9 +150,7 @@ const App = () => {
                   {/* <Switch>
                 <Route path="/routines"> */}
              
-                <Routines masterRoutinesList= {masterRoutinesList} 
-                    setMasterRoutineList={setMasterRoutineList}
-                />
+                
                 
                 {/* </Route> 
               */}
@@ -156,10 +159,13 @@ const App = () => {
               setMasterActivitiesList={setMasterActivitiesList} />
           
                   {/* <Route path="activities"> */}
-                  <Activities masterActivitiesList={masterActivitiesList} />
+                  {/* <Activities masterActivitiesList={masterActivitiesList} /> */}
                   {/* </Route> */}
                 
                 <NewRoutineForm masterRoutinesList= {masterRoutinesList}
+                    setMasterRoutineList={setMasterRoutineList}
+                />
+                <Routines masterRoutinesList= {masterRoutinesList} 
                     setMasterRoutineList={setMasterRoutineList}
                 />
              
