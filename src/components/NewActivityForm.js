@@ -6,7 +6,7 @@ const NewActivityForm = (props) => {
     const [activityName, setActivityName] = useState("");
     const [activitiyDescription, setActivityDescription] = useState("");
     const {masterActivitiesList, setMasterActivitiesList} = props;
-    console.log("<NewActivityForm/>", masterActivitiesList)
+    // console.log("<NewActivityForm/>", masterActivitiesList)
     const sendData = {
         name: activityName,
         description: activitiyDescription
@@ -55,7 +55,7 @@ const NewActivityForm = (props) => {
                 </p>
                 <button id="form-activity-submit">SUBMIT</button>
             </form>
-            <Activities masterActivitiesList={masterActivitiesList}/>
+            {/* <Activities masterActivitiesList={masterActivitiesList}/> */}
         </div>
     )
 }
