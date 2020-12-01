@@ -9,6 +9,7 @@ import NewActivityForm from "../components/NewActivityForm";
 import "./App.css"
 import LoginModal from "../components/LoginModal"
 import {Button,AppBar, Toolbar,Modal} from "@material-ui/core"
+import NewRoutineForm from "./NewRoutineForm"
 //import AccountCircleSharpIcon from '@material-ui/icons/AccountCircleSharp';
 
 
@@ -137,25 +138,32 @@ const App = () => {
                   </div>
 
                  
-                  <Switch>
-                <Route path="/routines">
-                {isLoggedIn ?
-                <Routines masterRoutinesList= {masterRoutinesList} />
-                : <h1>sorry no routines here</h1> }
-                </Route> 
-             
-                        
-          
-                  <Route path="activities">
-                  <Activities masterActivitiesList={masterActivitiesList} />
-                  </Route>
-                
-                
-             
-                  </Switch>
+                 
                  </div>
                 
                   )}
+                  {/* <Switch>
+                <Route path="/routines"> */}
+             
+                <Routines masterRoutinesList= {masterRoutinesList} 
+                    setMasterRoutineList={setMasterRoutineList}
+                />
+                
+                {/* </Route> 
+              */}
+              <NewActivityForm  
+              masterActivitiesList={masterActivitiesList}
+              setMasterActivitiesList={setMasterActivitiesList} />
+          
+                  {/* <Route path="activities"> */}
+                  <Activities masterActivitiesList={masterActivitiesList} />
+                  {/* </Route> */}
+                
+                <NewRoutineForm masterRoutinesList= {masterRoutinesList}
+                    setMasterRoutineList={setMasterRoutineList}
+                />
+             
+                  {/* </Switch> */}
             
           
                   </div>
