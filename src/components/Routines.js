@@ -3,7 +3,7 @@ import React from 'react';
 const Routines = (props) => {
     const {masterRoutinesList, setMasterRoutineList} = props;
 
-    console.log( "Master Routine", masterRoutinesList);
+    // console.log( "Master Routine", masterRoutinesList);
 
 
 
