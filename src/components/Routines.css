@@ -1,0 +1,15 @@
+.routineCard {
+  margin: 15px;
+  background-color: white;
+  box-shadow: 0 2px 8px black;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 0.5fr 2fr;
+}
+
+.routineCard .activity {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
