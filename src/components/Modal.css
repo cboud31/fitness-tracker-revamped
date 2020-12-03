@@ -1,11 +1,16 @@
-.modal{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .paper {
-    position: absolute;
-    width: 500px;
-    background-color: white;
+  position: absolute;
+  width: 500px;
+  background-color: white;
+}
 
+#NavButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
