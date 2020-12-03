@@ -1,33 +1,46 @@
-import React from 'react';
+
+import "./Routines.css";
 
 const Routines = (props) => {
-    const {masterRoutinesList, setMasterRoutineList} = props;
+  const { masterRoutinesList, setMasterRoutineList } = props;
 
-    // console.log( "Master Routine", masterRoutinesList);
+  console.log("Master Routine", masterRoutinesList);
 
+  return masterRoutinesList.map((routine, indx) => {
+    const { id, creatorId, activities, creatorName, goal, name } = routine;
 
+    return (
+      <div className="routineCard">
+        <h1 key={indx}>{name}</h1>
+        <h2>Goal: {goal}</h2>
+        {activities
+          ? activities.map((activity, index) => {
+              const { name, description, duration, count } = activity;
 
-    return (masterRoutinesList.map((routine, indx) => {
-        const {activities, creatorName, goal, name} = routine
-    
-        return <div className="routineCard">
-            <h1>Routine Starts here</h1>
-            <h2 key={indx}>{name}</h2>
-            <h3>{goal}</h3>
-            <h4>{creatorName}</h4>
-            { activities ? activities.map((activity, index)=> {
-                const {name, description, duration, count} = activity;
-
-            return <><h2 key={index}>{name}</h2>
-            <h3>{description}</h3>
-            <h4>Duration, {duration} mins</h4>
-            <h4>Reps, {count}</h4>
-                </>
-            }):''}
-            </div>
-    }))
-}
-
+              return (
+                <div className="activity">
+                  <h3 key={index} className="name" onClick={(event) =>{
+                      console.log(event);
+                      // create function that shows all routines this activity is in
+                  }}>
+                    Activity: {name}
+                  </h3>
+                  <h4 classname="description">Description: {description}</h4>
+                  <h4 classname="duration">
+                    Duration: {duration} mins. Repeat: {count}
+                  </h4>
+                </div>
+              );
+            })
+          : ""}
+        <h4 onClick={(event)=>{
+            console.log(event);
+            // create function that shows all routines by this user
+        }}>Created by: {creatorName}</h4>
+      </div>
+    );
+  });
+};
 
 
 export default Routines;

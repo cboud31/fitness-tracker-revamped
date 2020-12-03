@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import { getToken, clearToken, hitAPI } from "../api";
 
+
 import {
   Auth,
   Activities,
@@ -20,6 +21,7 @@ import {
 import "./App.css";
 import LoginModal from "../components/LoginModal";
 import { Button, AppBar, Toolbar, Modal } from "@material-ui/core";
+
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!getToken());
@@ -67,67 +69,21 @@ const App = () => {
         <AppBar position="absolute" style={{ background: "#20639B" }}>
           <Toolbar>
             {" "}
+
+          
+            <div className="nav-links">
+
             {/* Fitness Tracker */}
             {/* <div className="nav-links"> */}
-            <NavButtons
-              isLoggedIn={isLoggedIn}
-              setIsLoggedIn={setIsLoggedIn}
-              setloginModalOpen={setloginModalOpen}
-            />
-            {/* <NavButtons /> replaces the below "nav-links" ... */}
-            {/*
-              <ul>
-                <Link
-                  style={{
-                    color: "white",
-                    textDecoration: "none",
-                    fontWeight: "bold",
-                    fontFamily: "Roboto",
-                  }}
-                  to="/"
-                >
-                  Home
-                </Link>
-              </ul>
-                */}
-            {/* <ul>
-                <Link
-                  style={{
-                    color: "white",
-                    textDecoration: "none",
-                    fontWeight: "bold",
-                    fontFamily: "Roboto",
-                  }}
-                  to="/routines"
-                >
-                  Routines
-                </Link>
-              </ul> */}
-            {/* <ul>
-                <Link
-                  style={{
-                    color: "white",
-                    textDecoration: "none",
-                    fontWeight: "bold",
-                    fontFamily: "Roboto",
-                  }}
-                  to="/MyRoutines"
-                >
-                  My Routines
-                </Link>
-              </ul> */}
-            {/* <ul>
-                <Link
-                  style={{
-                    color: "white",
-                    textDecoration: "none",
-                    fontWeight: "bold",
-                    fontFamily: "Roboto",
-                  }}
-                  to="/activities"
-                >
-                  Activities
-                </Link>
+              <NavButtons
+                isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
+                setloginModalOpen={setloginModalOpen}
+              />
+              {/* <NavButtons /> replaces the below "nav-links" ... */}
+              {/*
+
+              
               </ul> */}
             {/* Transferred the below modal commands into <NavButtons /> */}
             {/* {!isLoggedIn ? (
@@ -151,9 +107,10 @@ const App = () => {
                   LOG OUT
                 </Button>
               )} */}
-            {/* </div> */}
+            </div>
           </Toolbar>
         </AppBar>
+        
 
         <main className="main-section">
           {/* <div> */}
