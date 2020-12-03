@@ -70,7 +70,7 @@ const App = () => {
           <Toolbar>
             {" "}
 
-            Fitness Tracker
+          
             <div className="nav-links">
 
             {/* Fitness Tracker */}
