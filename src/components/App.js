@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import { getToken, clearToken, hitAPI } from "../api";
 
-
 import {
   Auth,
   Activities,
@@ -11,6 +10,7 @@ import {
   NewActivityForm,
   NewRoutineForm,
   NavButtons,
+  Home,
 } from "../components";
 
 // import Routines from "../components/Routines";
@@ -21,7 +21,6 @@ import {
 import "./App.css";
 import LoginModal from "../components/LoginModal";
 import { Button, AppBar, Toolbar, Modal } from "@material-ui/core";
-
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!getToken());
@@ -69,12 +68,9 @@ const App = () => {
         <AppBar position="absolute" style={{ background: "#20639B" }}>
           <Toolbar>
             {" "}
-
-          
             <div className="nav-links">
-
-            {/* Fitness Tracker */}
-            {/* <div className="nav-links"> */}
+              {/* Fitness Tracker */}
+              {/* <div className="nav-links"> */}
               <NavButtons
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
@@ -85,8 +81,8 @@ const App = () => {
 
               
               </ul> */}
-            {/* Transferred the below modal commands into <NavButtons /> */}
-            {/* {!isLoggedIn ? (
+              {/* Transferred the below modal commands into <NavButtons /> */}
+              {/* {!isLoggedIn ? (
                 <Button
                   className="loginButton"
                   color="inherit"
@@ -110,17 +106,17 @@ const App = () => {
             </div>
           </Toolbar>
         </AppBar>
-        
 
         <main className="main-section">
           {/* <div> */}
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+          </Switch>
 
           {isLoggedIn ? (
-            <Switch>
-              <Route exact path="/activities">
-                <Activities masterActivitiesList={masterActivitiesList} />
-              </Route>
-            </Switch>
+            <Home />
           ) : (
             // <div>
             //   <h1>Thanks for logging in!</h1>
@@ -171,11 +167,22 @@ const App = () => {
             masterRoutinesList={masterRoutinesList}
             setMasterRoutineList={setMasterRoutineList}
             /> */}
+
           <Switch>
             <Route path="/routines">
               <Routines
                 masterRoutinesList={masterRoutinesList}
                 setMasterRoutineList={setMasterRoutineList}
+              />
+            </Route>
+          </Switch>
+
+          <Switch>
+            <Route exact path="/activities">
+              <Activities
+                masterActivitiesList={masterActivitiesList}
+                setMasterActivitiesList={setMasterActivitiesList}
+                isLoggedIn={isLoggedIn}
               />
             </Route>
           </Switch>
