@@ -41,8 +41,8 @@ const MyRoutines = (props) => {
                     }}>
                       Activity: {name}
                     </h3>
-                    <h4 classname="description">Description: {description}</h4>
-                    <h4 classname="duration">
+                    <h4 className="description">Description: {description}</h4>
+                    <h4 className="duration">
                       Duration: {duration} mins. Repeat: {count}
                     </h4>
                   </div>

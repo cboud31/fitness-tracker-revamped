@@ -13,14 +13,12 @@ import {
   NavButtons,
 } from "../components";
 
-// import Routines from "../components/Routines";
-// import Activities from "../components/Activities";
-// import NewActivityForm from "../components/NewActivityForm";
-// import NewRoutineForm from "./NewRoutineForm";
-//import AccountCircleSharpIcon from '@material-ui/icons/AccountCircleSharp';
+
 import "./App.css";
 import LoginModal from "../components/LoginModal";
 import { Button, AppBar, Toolbar, Modal } from "@material-ui/core";
+import MyRoutines from "./MyRoutines";
+import HomePage from "./HomePage"
 
 
 const App = () => {
@@ -73,40 +71,13 @@ const App = () => {
           
             <div className="nav-links">
 
-            {/* Fitness Tracker */}
-            {/* <div className="nav-links"> */}
+          
               <NavButtons
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
                 setloginModalOpen={setloginModalOpen}
               />
-              {/* <NavButtons /> replaces the below "nav-links" ... */}
-              {/*
-
-              
-              </ul> */}
-              {/* Transferred the below modal commands into <NavButtons /> */}
-              {/* {!isLoggedIn ? (
-                <Button
-                  className="loginButton"
-                  color="inherit"
-                  onClick={() => {
-                    showModal();
-                  }}
-                >
-                  Login
-                </Button>
-              ) : (
-                <Button
-                  onClick={() => {
-                    if (isLoggedIn) hideModal();
-                    clearToken();
-                    setIsLoggedIn(false);
-                  }}
-                >
-                  LOG OUT
-                </Button>
-              )} */}
+           
             </div>
           </Toolbar>
         </AppBar>
@@ -114,21 +85,11 @@ const App = () => {
 
         <main className="main-section">
 
-          {/* <div> */}
+  
             
             {isLoggedIn ? (
               null  
-              // <div>
-              //   <h1>Thanks for logging in!</h1>
-              //   <button
-              //     onClick={() => {
-              //       clearToken();
-              //       setIsLoggedIn(false);
-              //     }}
-              //   >
-              //     LOG OUT HERE
-              //   </button>
-              // </div>
+           
             ) : (
               <div>
                 <div>
@@ -146,42 +107,39 @@ const App = () => {
               </div>
             )}
 
+      
+              
 
-
-            {/* <Switch>
-                <Route path="/routines"> */}
-
-            {/* </Route>
-             */}
-              {/* <Route path="/myroutines"> */}
-              {/* <NewActivityForm
-              masterActivitiesList={masterActivitiesList}
-              setMasterActivitiesList={setMasterActivitiesList}
-            /> */}
-              {/* </Route> */}
-
+      
             <Switch>
-              <Route exact path="activities">
+
+           
+
+              <Route path="/activities">
                 <Activities masterActivitiesList={masterActivitiesList} />
               </Route>
-            </Switch>
+           
 
-            {/* <NewRoutineForm
-            masterRoutinesList={masterRoutinesList}
-            setMasterRoutineList={setMasterRoutineList}
-            /> */}
-            <Switch>
-              <Route path="routines">
+              <Route path = "/routines">
                 <Routines
                   masterRoutinesList={masterRoutinesList}
                   setMasterRoutineList={setMasterRoutineList}
                 />
-              </Route>
-            </Switch>
+                </Route>
+                <Route path="/home">
+              <HomePage />
+            </Route>
 
-            {/* </Switch> */}
-          {/* </div> */}
+                <Route>
+                  <MyRoutines masterActivitiesList={masterActivitiesList}
+                    masterRoutinesList={masterRoutinesList}
+                  />
+                </Route>
+            
+            </Switch>
+     
         </main>
+        
       </div>
     </Router>
   );

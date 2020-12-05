@@ -34,7 +34,7 @@ const LoginModal = (props) =>{
                 open={open}
                 onClose={handleClose}
             >
-                <div>
+                <div style={{"backgroundColor":"white"}}>
                  <Auth />
                 </div>
             </Modal>
