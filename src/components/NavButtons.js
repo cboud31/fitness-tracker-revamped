@@ -55,7 +55,7 @@ const NavButtons = (props) => {
         ) : (
           // 3 Above Components + MyRoutines
           <>
-            <Link to="#">
+            <Link to="/">
               <Button variant="contained" color="default">
                 HOME
               </Button>
