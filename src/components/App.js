@@ -3,23 +3,22 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import { getToken, clearToken, hitAPI } from "../api";
 
-
 import {
   Auth,
   Activities,
   Routines,
+  // MyRoutines,
   NewActivityForm,
   NewRoutineForm,
   NavButtons,
+  Home,
 } from "../components";
-
 
 import "./App.css";
 import LoginModal from "../components/LoginModal";
 import { Button, AppBar, Toolbar, Modal } from "@material-ui/core";
 import MyRoutines from "./MyRoutines";
 import HomePage from "./HomePage"
-
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!getToken());
@@ -41,8 +40,7 @@ const App = () => {
   useEffect(() => {
     hitAPI("GET", "/users/me")
       .then((data) => {
-        setUserId(data.username);
-        // console.log("username", data.username);
+        setUserId(data.id);
       })
       .catch((err) => console.error(err));
   }, [isLoggedIn]);
@@ -67,8 +65,6 @@ const App = () => {
         <AppBar position="absolute" style={{ background: "#20639B" }}>
           <Toolbar>
             {" "}
-
-          
             <div className="nav-links">
 
           
@@ -81,7 +77,6 @@ const App = () => {
             </div>
           </Toolbar>
         </AppBar>
-        
 
         <main className="main-section">
 
@@ -92,18 +87,16 @@ const App = () => {
            
             ) : (
               <div>
-                <div>
-                  <Modal
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
-                    open={loginModalOpen}
-                    onClose={hideModal}
-                  >
-                    <div>
-                      <Auth setIsLoggedIn={setIsLoggedIn} />
-                    </div>
-                  </Modal>
-                </div>
+                <Modal
+                  aria-labelledby="simple-modal-title"
+                  aria-describedby="simple-modal-description"
+                  open={loginModalOpen}
+                  onClose={hideModal}
+                >
+                  <div>
+                    <Auth setIsLoggedIn={setIsLoggedIn} />
+                  </div>
+                </Modal>
               </div>
             )}
 
@@ -142,6 +135,8 @@ const App = () => {
         
       </div>
     </Router>
+
+   
   );
 };
 
