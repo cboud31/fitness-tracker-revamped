@@ -28,7 +28,7 @@ const NavButtons = (props) => {
         {!isLoggedIn ? (
           // Links to Routines, Activities & Home(?) , Log-in Modal (?)
           <>
-            <Link to="#">
+            <Link to="/home">
               <Button className="nav-button" variant="contained">
                 HOME
               </Button>
@@ -55,13 +55,13 @@ const NavButtons = (props) => {
         ) : (
           // 3 Above Components + MyRoutines
           <>
-            <Link to="#">
+            <Link to="/home">
               <Button variant="contained" color="default">
                 HOME
               </Button>
             </Link>
 
-            <Link to="#">
+            <Link to="/myroutines">
               <Button variant="contained" color="default">
                 MY ROUTINES
               </Button>

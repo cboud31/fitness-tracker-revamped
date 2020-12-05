@@ -3,25 +3,22 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import { getToken, clearToken, hitAPI } from "../api";
 
-
 import {
   Auth,
   Activities,
   Routines,
+  // MyRoutines,
   NewActivityForm,
   NewRoutineForm,
   NavButtons,
+  Home,
 } from "../components";
 
-// import Routines from "../components/Routines";
-// import Activities from "../components/Activities";
-// import NewActivityForm from "../components/NewActivityForm";
-// import NewRoutineForm from "./NewRoutineForm";
-//import AccountCircleSharpIcon from '@material-ui/icons/AccountCircleSharp';
 import "./App.css";
 import LoginModal from "../components/LoginModal";
 import { Button, AppBar, Toolbar, Modal } from "@material-ui/core";
-
+import MyRoutines from "./MyRoutines";
+import HomePage from "./HomePage"
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!getToken());
@@ -43,8 +40,7 @@ const App = () => {
   useEffect(() => {
     hitAPI("GET", "/users/me")
       .then((data) => {
-        setUserId(data.username);
-        // console.log("username", data.username);
+        setUserId(data.id);
       })
       .catch((err) => console.error(err));
   }, [isLoggedIn]);
@@ -69,121 +65,82 @@ const App = () => {
         <AppBar position="absolute" style={{ background: "#20639B" }}>
           <Toolbar>
             {" "}
-
-          
             <div className="nav-links">
 
-            {/* Fitness Tracker */}
-            {/* <div className="nav-links"> */}
+          
               <NavButtons
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
                 setloginModalOpen={setloginModalOpen}
               />
-              {/* <NavButtons /> replaces the below "nav-links" ... */}
-              {/*
-
-              
-              </ul> */}
-              {/* Transferred the below modal commands into <NavButtons /> */}
-              {/* {!isLoggedIn ? (
-                <Button
-                  className="loginButton"
-                  color="inherit"
-                  onClick={() => {
-                    showModal();
-                  }}
-                >
-                  Login
-                </Button>
-              ) : (
-                <Button
-                  onClick={() => {
-                    if (isLoggedIn) hideModal();
-                    clearToken();
-                    setIsLoggedIn(false);
-                  }}
-                >
-                  LOG OUT
-                </Button>
-              )} */}
+           
             </div>
           </Toolbar>
         </AppBar>
-        
 
         <main className="main-section">
 
-          {/* <div> */}
+  
             
             {isLoggedIn ? (
               null  
-              // <div>
-              //   <h1>Thanks for logging in!</h1>
-              //   <button
-              //     onClick={() => {
-              //       clearToken();
-              //       setIsLoggedIn(false);
-              //     }}
-              //   >
-              //     LOG OUT HERE
-              //   </button>
-              // </div>
+           
             ) : (
               <div>
-                <div>
-                  <Modal
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
-                    open={loginModalOpen}
-                    onClose={hideModal}
-                  >
-                    <div>
-                      <Auth setIsLoggedIn={setIsLoggedIn} />
-                    </div>
-                  </Modal>
-                </div>
+                <Modal
+                  aria-labelledby="simple-modal-title"
+                  aria-describedby="simple-modal-description"
+                  open={loginModalOpen}
+                  onClose={hideModal}
+                >
+                  <div>
+                    <Auth setIsLoggedIn={setIsLoggedIn} />
+                  </div>
+                </Modal>
               </div>
             )}
 
+      
+              
 
-
-            {/* <Switch>
-                <Route path="/routines"> */}
-
-            {/* </Route>
-             */}
-              {/* <Route path="/myroutines"> */}
-              {/* <NewActivityForm
-              masterActivitiesList={masterActivitiesList}
-              setMasterActivitiesList={setMasterActivitiesList}
-            /> */}
-              {/* </Route> */}
-
+      
             <Switch>
-              <Route exact path="activities">
-                <Activities masterActivitiesList={masterActivitiesList} />
+
+           
+
+              <Route path="/activities">
+              <Activities
+                masterActivitiesList={masterActivitiesList}
+                setMasterActivitiesList={setMasterActivitiesList}
+                isLoggedIn={isLoggedIn}
+              />
               </Route>
-            </Switch>
+           
 
-            {/* <NewRoutineForm
-            masterRoutinesList={masterRoutinesList}
-            setMasterRoutineList={setMasterRoutineList}
-            /> */}
-            <Switch>
-              <Route path="routines">
+              <Route path = "/routines">
                 <Routines
                   masterRoutinesList={masterRoutinesList}
                   setMasterRoutineList={setMasterRoutineList}
                 />
-              </Route>
-            </Switch>
+                </Route>
+                <Route path="/home">
+              <HomePage />
+            </Route>
 
-            {/* </Switch> */}
-          {/* </div> */}
+                <Route>
+                  <MyRoutines masterActivitiesList={masterActivitiesList}
+                    masterRoutinesList={masterRoutinesList}
+                  />
+                </Route>
+            
+            </Switch>
+     
         </main>
+        
       </div>
     </Router>
+
+   
   );
 };
 
