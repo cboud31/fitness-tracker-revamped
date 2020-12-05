@@ -1,11 +1,10 @@
-import React from "react";
 
 import "./Routines.css";
 
 const Routines = (props) => {
   const { masterRoutinesList, setMasterRoutineList } = props;
 
-  console.log("Master Routine", masterRoutinesList);
+  // console.log("Master Routine", masterRoutinesList);
 
   return masterRoutinesList.map((routine, indx) => {
     const { id, creatorId, activities, creatorName, goal, name } = routine;
@@ -21,7 +20,7 @@ const Routines = (props) => {
               return (
                 <div className="activity">
                   <h3 key={index} className="name" onClick={(event) =>{
-                      console.log(event);
+                      // console.log(event);
                       // create function that shows all routines this activity is in
                   }}>
                     Activity: {name}
@@ -35,7 +34,7 @@ const Routines = (props) => {
             })
           : ""}
         <h4 onClick={(event)=>{
-            console.log(event);
+            // console.log(event);
             // create function that shows all routines by this user
         }}>Created by: {creatorName}</h4>
       </div>
