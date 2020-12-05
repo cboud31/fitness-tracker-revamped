@@ -109,7 +109,11 @@ const App = () => {
            
 
               <Route path="/activities">
-                <Activities masterActivitiesList={masterActivitiesList} />
+              <Activities
+                masterActivitiesList={masterActivitiesList}
+                setMasterActivitiesList={setMasterActivitiesList}
+                isLoggedIn={isLoggedIn}
+              />
               </Route>
            
 

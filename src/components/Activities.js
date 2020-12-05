@@ -4,6 +4,7 @@ import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import {Container} from "@material-ui/core"
 
 
 import NewActivityForm from "./NewActivityForm";
@@ -23,7 +24,7 @@ const Activities = (props) => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)} />
     </div> */}
-    <div className="activity-list">
+    <div className="activity-list" style={{"margin-top":"200px"}}>
       {isLoggedIn ? (
         <NewActivityForm
           masterActivitiesList={masterActivitiesList}
@@ -32,9 +33,11 @@ const Activities = (props) => {
       ) : null}
 
       {masterActivitiesList.map((activity, idx) => {
+        
         const { name, description } = activity;
         return (
           <div className="activity" key={idx}>
+          <Container fixed style={{ "z-index": "1"}}>
             <Accordion>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -48,6 +51,7 @@ const Activities = (props) => {
                 <h4>{description}</h4>
               </AccordionDetails>
             </Accordion>
+            </Container>
           </div>
         );
       })}
