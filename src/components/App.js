@@ -7,11 +7,14 @@ import {
   Auth,
   Activities,
   Routines,
+  // MyRoutines,
   NewActivityForm,
   NewRoutineForm,
   NavButtons,
   Home,
 } from "../components";
+
+import MyRoutines from "./MyRoutines";
 
 // import Routines from "../components/Routines";
 // import Activities from "../components/Activities";
@@ -42,8 +45,7 @@ const App = () => {
   useEffect(() => {
     hitAPI("GET", "/users/me")
       .then((data) => {
-        setUserId(data.username);
-        // console.log("username", data.username);
+        setUserId(data.id);
       })
       .catch((err) => console.error(err));
   }, [isLoggedIn]);
@@ -76,59 +78,19 @@ const App = () => {
                 setIsLoggedIn={setIsLoggedIn}
                 setloginModalOpen={setloginModalOpen}
               />
-              {/* <NavButtons /> replaces the below "nav-links" ... */}
-              {/*
 
-              
-              </ul> */}
-              {/* Transferred the below modal commands into <NavButtons /> */}
-              {/* {!isLoggedIn ? (
-                <Button
-                  className="loginButton"
-                  color="inherit"
-                  onClick={() => {
-                    showModal();
-                  }}
-                >
-                  Login
-                </Button>
-              ) : (
-                <Button
-                  onClick={() => {
-                    if (isLoggedIn) hideModal();
-                    clearToken();
-                    setIsLoggedIn(false);
-                  }}
-                >
-                  LOG OUT
-                </Button>
-              )} */}
             </div>
           </Toolbar>
         </AppBar>
 
         <main className="main-section">
           {/* <div> */}
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-          </Switch>
+      
 
           {isLoggedIn ? (
-            <Home />
+        
           ) : (
-            // <div>
-            //   <h1>Thanks for logging in!</h1>
-            //   <button
-            //     onClick={() => {
-            //       clearToken();
-            //       setIsLoggedIn(false);
-            //     }}
-            //   >
-            //     LOG OUT HERE
-            //   </button>
-            // </div>
+          
             <div>
               <div>
                 <Modal
@@ -145,53 +107,14 @@ const App = () => {
             </div>
           )}
 
-          {/* <Switch>
-                <Route path="/routines"> */}
-
-          {/* </Route>
-           */}
-          {/* <Route path="/myroutines"> */}
-          {/* <NewActivityForm
-              masterActivitiesList={masterActivitiesList}
-              setMasterActivitiesList={setMasterActivitiesList}
-            /> */}
-          {/* </Route> */}
-
-          {/* <Switch>
-              <Route exact path="activities">
-                <Activities masterActivitiesList={masterActivitiesList} />
-              </Route>
-            </Switch> */}
-
-          {/* <NewRoutineForm
-            masterRoutinesList={masterRoutinesList}
-            setMasterRoutineList={setMasterRoutineList}
-            /> */}
-
-          <Switch>
-            <Route path="/routines">
-              <Routines
-                masterRoutinesList={masterRoutinesList}
-                setMasterRoutineList={setMasterRoutineList}
-              />
-            </Route>
-          </Switch>
-
-          <Switch>
-            <Route exact path="/activities">
-              <Activities
-                masterActivitiesList={masterActivitiesList}
-                setMasterActivitiesList={setMasterActivitiesList}
-                isLoggedIn={isLoggedIn}
-              />
-            </Route>
-          </Switch>
 
           {/* </Switch> */}
           {/* </div> */}
         </main>
       </div>
     </Router>
+
+   
   );
 };
 

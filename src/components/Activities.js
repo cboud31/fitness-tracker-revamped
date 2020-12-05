@@ -1,12 +1,15 @@
+
 import React from "react";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
+
 import NewActivityForm from "./NewActivityForm";
 
 const Activities = (props) => {
+
   // will need useState for searchbar...
 
   const { masterActivitiesList, setMasterActivitiesList, isLoggedIn } = props;
@@ -57,3 +60,4 @@ export default Activities;
 /*
 <h2 key={idx}>{name}</h2>;
 */
+

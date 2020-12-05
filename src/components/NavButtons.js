@@ -61,7 +61,7 @@ const NavButtons = (props) => {
               </Button>
             </Link>
 
-            <Link to="#">
+            <Link to="/myroutines">
               <Button variant="contained" color="default">
                 MY ROUTINES
               </Button>
