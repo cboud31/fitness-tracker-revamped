@@ -1,4 +1,4 @@
-/* .dropbtn {
+.dropbtn {
     background-color: #3498DB;
     color: white;
     padding: 16px;
@@ -35,4 +35,4 @@
   
   .dropdown li:hover {background-color: #ddd;}
   
-  .show {display: block;} */
+  .show {display: block;}

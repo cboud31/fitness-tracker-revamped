@@ -95,9 +95,9 @@ const App = () => {
                 setMasterRoutineList={setMasterRoutineList}
               />
             </Route>
-            <Route exact path="/">
+            {/* <Route exact path="/">
               <HomePage />
-            </Route>
+            </Route> */}
 
             <Route path="/myroutines">
               <MyRoutines
