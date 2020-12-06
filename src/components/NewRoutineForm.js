@@ -10,7 +10,7 @@ const NewRoutineForm = (props) => {
   const sendData = {
     name: name,
     goal: goal,
-    // isPublic?
+    isPublic: true
   };
   const addToRoutineList = (newRoutine) => {
     const routineListClone = [newRoutine, ...masterRoutinesList];
@@ -20,7 +20,7 @@ const NewRoutineForm = (props) => {
     //   setIsPublic(null)?
   };
   return (
-    <div id="NewRoutineForm">
+    <div id="NewRoutineForm" style={{"marginTop":"200px"}}>
       <form
         className="form-routine"
         style={{ border: "1px solid black" }}
