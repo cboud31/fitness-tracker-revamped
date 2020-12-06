@@ -24,7 +24,7 @@ const Activities = (props) => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)} />
     </div> */}
-    <div className="activity-list" style={{"margin-top":"200px"}}>
+    <div className="activity-list" style={{"marginTop":"200px"}}>
       {isLoggedIn ? (
         <NewActivityForm
           masterActivitiesList={masterActivitiesList}

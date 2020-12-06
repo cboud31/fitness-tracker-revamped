@@ -1,4 +1,4 @@
-.routineCard {
+/* .routineCard {
   margin: 15px;
   background-color: white;
   box-shadow: 0 2px 8px black;
@@ -12,4 +12,16 @@
   border-bottom: 1px solid black;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
+} */
+
+.routineCard{ 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  place-items: center;
+  margin: 40px 40px 20px 20px;
+  flex-direction: wrap;
+
 }
