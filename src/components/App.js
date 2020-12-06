@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import { getToken, clearToken, hitAPI } from "../api";
-
 import {
   Auth,
   Activities,
@@ -13,13 +12,15 @@ import {
   NavButtons,
   Home,
 } from "../components";
-
 import "./App.css";
 import LoginModal from "../components/LoginModal";
 import { Button, AppBar, Toolbar, Modal } from "@material-ui/core";
 import MyRoutines from "./MyRoutines";
 import HomePage from "./HomePage";
+<<<<<<< HEAD
 
+=======
+>>>>>>> d93224cb39f3225282dbcaa8ccb74edbc55060b7
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!getToken());
   const [getUserId, setUserId] = useState("");
@@ -27,15 +28,12 @@ const App = () => {
   const [masterActivitiesList, setMasterActivitiesList] = useState([]);
   const [open, setOpen] = useState(false);
   const [loginModalOpen, setloginModalOpen] = useState(false);
-
   const showModal = () => {
     setloginModalOpen(true);
   };
-
   const hideModal = () => {
     setloginModalOpen(false);
   };
-
   // Sets userId after log-in:
   useEffect(() => {
     hitAPI("GET", "/users/me")
@@ -44,7 +42,6 @@ const App = () => {
       })
       .catch((err) => console.error(err));
   }, [isLoggedIn]);
-
   //  All users regardless of isLoggedIn can view these
   useEffect(() => {
     Promise.all([hitAPI("GET", "/routines"), hitAPI("GET", "/activities")])
@@ -58,7 +55,6 @@ const App = () => {
       })
       .catch((err) => console.error(err));
   }, []);
-
   return (
     <Router>
       <div className="app">
@@ -74,7 +70,6 @@ const App = () => {
             </div>
           </Toolbar>
         </AppBar>
-
         <main className="main-section">
           {isLoggedIn ? null : (
             <div>
@@ -90,7 +85,10 @@ const App = () => {
               </Modal>
             </div>
           )}
+<<<<<<< HEAD
 
+=======
+>>>>>>> d93224cb39f3225282dbcaa8ccb74edbc55060b7
           <Switch>
             <Route path="/activities">
               <Activities
@@ -99,7 +97,10 @@ const App = () => {
                 isLoggedIn={isLoggedIn}
               />
             </Route>
+<<<<<<< HEAD
 
+=======
+>>>>>>> d93224cb39f3225282dbcaa8ccb74edbc55060b7
             <Route path="/routines">
               <Routines
                 masterRoutinesList={masterRoutinesList}
@@ -117,7 +118,10 @@ const App = () => {
                 getUserId={getUserId}
                 setMasterActivitiesList={setMasterActivitiesList}
                 setMasterRoutineList={setMasterRoutineList}
+<<<<<<< HEAD
                 
+=======
+>>>>>>> d93224cb39f3225282dbcaa8ccb74edbc55060b7
               />
             </Route>
           </Switch>
@@ -126,5 +130,4 @@ const App = () => {
     </Router>
   );
 };
-
 export default App;

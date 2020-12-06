@@ -1,5 +1,11 @@
 
 import "./Routines.css";
+import {Card,
+    CardActions,
+    CardContent,
+    CardHeader,
+    Button,
+    Typography} from "@material-ui/core"
 
 const Routines = (props) => {
   const { masterRoutinesList, setMasterRoutineList } = props;
@@ -10,8 +16,17 @@ const Routines = (props) => {
     const { id, creatorId, activities, creatorName, goal, name } = routine;
 
     return (
-      <div className="routineCard">
+      <div className="routineCard" >
+      <Card style={{
+                width: "300px",
+                border: "1px solid grey",
+                "width": "450px",
+                "padding": "10px"
+              }}>
+      <CardHeader>
         <h1 key={indx}>{name}</h1>
+        </CardHeader>
+        <CardContent>
         <h2>Goal: {goal}</h2>
         {activities
           ? activities.map((activity, index) => {
@@ -19,6 +34,7 @@ const Routines = (props) => {
 
               return (
                 <div className="activity">
+              
                   <h3 key={index} className="name" onClick={(event) =>{
                       // console.log(event);
                       // create function that shows all routines this activity is in
@@ -29,6 +45,7 @@ const Routines = (props) => {
                   <h4 className="duration">
                     Duration: {duration} mins. Repeat: {count}
                   </h4>
+                 
                 </div>
               );
             })
@@ -37,6 +54,8 @@ const Routines = (props) => {
             // console.log(event);
             // create function that shows all routines by this user
         }}>Created by: {creatorName}</h4>
+        </CardContent>
+        </Card>
       </div>
     );
   });
