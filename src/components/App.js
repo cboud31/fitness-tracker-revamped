@@ -18,7 +18,7 @@ import "./App.css";
 import LoginModal from "../components/LoginModal";
 import { Button, AppBar, Toolbar, Modal } from "@material-ui/core";
 import MyRoutines from "./MyRoutines";
-import HomePage from "./HomePage"
+import HomePage from "./HomePage";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!getToken());
@@ -66,81 +66,64 @@ const App = () => {
           <Toolbar>
             {" "}
             <div className="nav-links">
-
-          
               <NavButtons
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
                 setloginModalOpen={setloginModalOpen}
               />
-           
             </div>
           </Toolbar>
         </AppBar>
 
         <main className="main-section">
+          {isLoggedIn ? null : (
+            <div>
+              <Modal
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                open={loginModalOpen}
+                onClose={hideModal}
+              >
+                <div>
+                  <Auth setIsLoggedIn={setIsLoggedIn} />
+                </div>
+              </Modal>
+            </div>
+          )}
 
-  
-            
-            {isLoggedIn ? (
-              null  
-           
-            ) : (
-              <div>
-                <Modal
-                  aria-labelledby="simple-modal-title"
-                  aria-describedby="simple-modal-description"
-                  open={loginModalOpen}
-                  onClose={hideModal}
-                >
-                  <div>
-                    <Auth setIsLoggedIn={setIsLoggedIn} />
-                  </div>
-                </Modal>
-              </div>
-            )}
-
-      
-              
-
-      
-            <Switch>
-
-           
-
-              <Route path="/activities">
+          <Switch>
+            <Route path="/activities">
               <Activities
                 masterActivitiesList={masterActivitiesList}
                 setMasterActivitiesList={setMasterActivitiesList}
                 isLoggedIn={isLoggedIn}
               />
-              </Route>
-           
+            </Route>
 
-              <Route path = "/routines">
-                <Routines
-                  masterRoutinesList={masterRoutinesList}
-                  setMasterRoutineList={setMasterRoutineList}
-                />
-                </Route>
-                <Route path="/home">
+            <Route path="/routines">
+              <Routines
+                masterRoutinesList={masterRoutinesList}
+                setMasterRoutineList={setMasterRoutineList}
+              />
+            </Route>
+            <Route exact path="/">
               <HomePage />
             </Route>
 
-                <Route>
-                  <MyRoutines masterActivitiesList={masterActivitiesList}
-                    masterRoutinesList={masterRoutinesList}
-                  />
-                </Route>
-            
-            </Switch>
-     
+            <Route path="/myroutines">
+              <MyRoutines
+                masterActivitiesList={masterActivitiesList}
+                masterRoutinesList={masterRoutinesList}
+                getUserId={getUserId}
+                setMasterActivitiesList={setMasterActivitiesList}
+                setMasterRoutineList={setMasterRoutineList}
+                
+              />
+            </Route>
+          </Switch>
         </main>
-        
       </div>
     </Router>
-
-   
   );
 };
 
