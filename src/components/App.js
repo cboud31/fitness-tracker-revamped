@@ -17,10 +17,6 @@ import LoginModal from "../components/LoginModal";
 import { Button, AppBar, Toolbar, Modal } from "@material-ui/core";
 import MyRoutines from "./MyRoutines";
 import HomePage from "./HomePage";
-<<<<<<< HEAD
-
-=======
->>>>>>> d93224cb39f3225282dbcaa8ccb74edbc55060b7
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!getToken());
   const [getUserId, setUserId] = useState("");
@@ -85,10 +81,6 @@ const App = () => {
               </Modal>
             </div>
           )}
-<<<<<<< HEAD
-
-=======
->>>>>>> d93224cb39f3225282dbcaa8ccb74edbc55060b7
           <Switch>
             <Route path="/activities">
               <Activities
@@ -97,10 +89,6 @@ const App = () => {
                 isLoggedIn={isLoggedIn}
               />
             </Route>
-<<<<<<< HEAD
-
-=======
->>>>>>> d93224cb39f3225282dbcaa8ccb74edbc55060b7
             <Route path="/routines">
               <Routines
                 masterRoutinesList={masterRoutinesList}
@@ -118,10 +106,6 @@ const App = () => {
                 getUserId={getUserId}
                 setMasterActivitiesList={setMasterActivitiesList}
                 setMasterRoutineList={setMasterRoutineList}
-<<<<<<< HEAD
-                
-=======
->>>>>>> d93224cb39f3225282dbcaa8ccb74edbc55060b7
               />
             </Route>
           </Switch>
